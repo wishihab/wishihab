@@ -3,7 +3,7 @@
 <!--
 **wishihab/wishihab** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
-<img src="https://github-readme-stats.vercel.app/api?username=wishihab&show_icons=true&hide_border=true&theme=radical" />
+![wishihab's github stats](https://github-readme-stats.vercel.app/api?username=wishihab)
 
 Here are some ideas to get you started:
 
