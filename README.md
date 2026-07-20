@@ -1,9 +1,25 @@
-## Hi there 👋
+<a href="https://github.com/wishihab">
+  <img align="center" width="49%" src="./header.svg" />
+</a>
+<br/>
+<a href="https://github.com/wishihab">
+  <img align="center" width="49%" src="./repositories.svg" />
+</a>
+<a href="https://github.com/wishihab">
+  <img align="center" width="49%" src="./acti_comm.svg" />
+</a>
 
-### 📌 Starred topics
+<a href="https://github.com/wishihab">
+  <img align="center" width="49%" src="./iso_calender.svg" />
+</a>
 
-![Starred topics](./metrics.plugin.topics.icons.svg)
+<a href="https://github.com/wishihab">
+  <img align="center" width="49%" src="./issue_pr_lang.svg" />
+</a>
 
-### 🏆 Achievements
-
-![Achievements](./metrics.plugin.achievements.compact.svg)
+<a href="https://github.com/wishihab">
+  <img align="center" width="49%" src="./github-habits.svg" />
+</a>
+<a href="https://github.com/wishihab">
+  <img align="center" width="49%" src="./achievements.svg" />
+</a>

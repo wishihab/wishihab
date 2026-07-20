@@ -1,0 +1,202 @@
+name: Metrics
+on:
+  # Schedule updates (every 12 hours)
+  schedule: [{cron: "0 */12 * * *"}]
+  # Lines below let you run workflow manually and on each commit (optional)
+  workflow_dispatch:
+  push: {branches: ["main"]}
+
+jobs:
+
+  achievements:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Generate achievements metrics
+        uses: dkhokhlov/metrics@master
+        with:
+          filename: achievements.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          committer_token: ${{ secrets.GITHUB_TOKEN }}
+          user: wishihab
+          base: ""
+          template: classic
+          plugin_achievements: yes
+          plugin_achievements_threshold: C
+          plugin_achievements_secrets: yes
+          plugin_achievements_display: compact
+          plugin_achievements_limit: 0
+
+  github-metrics:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Generate header metrics
+        uses: dkhokhlov/metrics@master
+        with:
+          filename: header.svg
+          # You'll need to setup a personal token in your secrets.
+          token: ${{ secrets.METRICS_TOKEN }}
+          # GITHUB_TOKEN is a special auto-generated token used for commits
+          committer_token: ${{ secrets.GITHUB_TOKEN }}
+
+          # Options
+          user: wishihab
+          template: classic
+          base: header
+          config_timezone: Asia/Jakarta
+
+  lines:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Generate lines of code metrics
+        uses: dkhokhlov/metrics@master
+        with:
+          filename: lines-of-code.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          committer_token: ${{ secrets.GITHUB_TOKEN }}
+          base: "repositories"
+          plugin_lines: yes
+
+  acti_comm:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Generate activity and community metrics
+        uses: dkhokhlov/metrics@master
+        with:
+          filename: acti_comm.svg
+          # You'll need to setup a personal token in your secrets.
+          token: ${{ secrets.METRICS_TOKEN }}
+          # GITHUB_TOKEN is a special auto-generated token used for commits
+          committer_token: ${{ secrets.GITHUB_TOKEN }}
+
+          # Options
+          user: wishihab
+          template: classic
+          base: activity, community
+          config_timezone: Asia/Jakarta
+
+  iso_calender:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Generate isometric calendar metrics
+        uses: dkhokhlov/metrics@master
+        with:
+          filename: iso_calender.svg
+          # You'll need to setup a personal token in your secrets.
+          token: ${{ secrets.METRICS_TOKEN }}
+          # GITHUB_TOKEN is a special auto-generated token used for commits
+          committer_token: ${{ secrets.GITHUB_TOKEN }}
+
+          # Options
+          user: wishihab
+          template: classic
+          base: ""
+          config_timezone: Asia/Jakarta
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: half-year
+
+  habits:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Generate coding habits metrics
+        uses: dkhokhlov/metrics@master
+        with:
+          filename: github-habits.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          committer_token: ${{ secrets.GITHUB_TOKEN }}
+          config_timezone: Asia/Jakarta
+          user: wishihab
+          base: ""
+          template: classic
+          plugin_habits: yes
+          plugin_habits_from: 100 # Reduced from 200 to avoid rate limits
+          plugin_habits_days: 30 # Increased from 14 to get more data
+          plugin_habits_charts: yes # Display charts section
+          plugin_habits_trim: yes # Trim unused hours on daily chart
+
+  issue_pr_lang:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Generate issues, PRs, and languages metrics
+        uses: dkhokhlov/metrics@master
+        with:
+          filename: issue_pr_lang.svg
+          # You'll need to setup a personal token in your secrets.
+          token: ${{ secrets.METRICS_TOKEN }}
+          # GITHUB_TOKEN is a special auto-generated token used for commits
+          committer_token: ${{ secrets.GITHUB_TOKEN }}
+
+          # Options
+          user: wishihab
+          template: classic
+          base: ""
+          config_timezone: Asia/Jakarta
+          plugin_followup: yes
+          plugin_languages: yes
+          plugin_languages_indepth: yes
+          commits_authoring: Alwi, wishihab
+
+  repositories:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Generate repositories metrics
+        uses: dkhokhlov/metrics@master
+        with:
+          filename: repositories.svg
+          # You'll need to setup a personal token in your secrets.
+          token: ${{ secrets.METRICS_TOKEN }}
+          # GITHUB_TOKEN is a special auto-generated token used for commits
+          committer_token: ${{ secrets.GITHUB_TOKEN }}
+
+          # Options
+          user: wishihab
+          template: classic
+          base: repositories
+          config_timezone: Asia/Jakarta
