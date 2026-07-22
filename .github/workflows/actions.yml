@@ -1,7 +1,7 @@
 name: Metrics
 on:
-  # Schedule updates (every 12 hours)
-  schedule: [{cron: "0 */12 * * *"}]
+  # Schedule updates (every 12 hours) on mon, wed, sat
+  schedule: [{cron: "0 0/12 * * 1,3,6"}]
   # Lines below let you run workflow manually and on each commit (optional)
   workflow_dispatch:
   push: {branches: ["main"]}
