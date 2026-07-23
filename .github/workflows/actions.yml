@@ -8,6 +8,29 @@ on:
 
 jobs:
 
+  snake:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Generate contribution snake
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            github-contribution-grid-snake-dark.svg?palette=github-dark
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit snake svg
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update contribution snake [skip ci]"
+          file_pattern: github-contribution-grid-snake-dark.svg
+
   achievements:
     runs-on: ubuntu-latest
     permissions:

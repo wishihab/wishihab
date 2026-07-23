@@ -1,3 +1,5 @@
+<img alt="github contribution snake" src="./github-contribution-grid-snake-dark.svg" />
+
 <a href="https://github.com/wishihab">
   <img align="center" width="49%" src="./header.svg" />
 </a>
